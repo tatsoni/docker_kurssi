@@ -1,0 +1,27 @@
+start ubuntu: 
+docker container run -d -it ubuntu:16.04
+
+install curl:
+docker container ps
+docker container exec -it 0c56731445b3 bash
+
+inside container:
+apt update && sudo apt upgrade
+apt install curl
+exit
+
+running curl:
+docker container exec -it 0c56731445b3 sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
+Input website:
+helsinki.fi
+Searching..
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://www.helsinki.fi/">here</a>.</p>
+</body></html>
+
+
+

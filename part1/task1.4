@@ -1,0 +1,11 @@
+docker container run --name bashtask devopsdockeruh/exec_bash_exercise
+
+(base) tatus-MacBook-Pro:part1 tatumustonen$ docker container ps
+docker container run --name bashtask devopsdockeruh/exec_bash_exercise
+CONTAINER ID   IMAGE                               COMMAND                  CREATED         STATUS         PORTS     NAMES
+a9709afd9f42   devopsdockeruh/exec_bash_exercise   "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes             bashtask
+(base) tatus-MacBook-Pro:part1 tatumustonen$ docker container exec -it a9709afd9f42 bash
+
+Secret message is:
+"Docker is easy"
+
