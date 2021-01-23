@@ -1,0 +1,26 @@
+version: '3.5'
+
+services:
+
+    task2.5-back:
+      image: task1.12_back
+      build: ./backend
+      ports:
+       - 8000:8000
+      environment:
+       - REDIS=database
+       - REDIS_PORT=6379
+      container_name: task2.5-backend
+
+    task2.5-front:
+      image: task1.12_front
+      build: ./frontend
+      ports:
+       - 5000:5000
+      container_name: task2.5-frontend
+
+    database:
+      image: redis
+      ports:
+        - 6379:6379
+

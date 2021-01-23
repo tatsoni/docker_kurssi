@@ -1,0 +1,49 @@
+version: '3.6'
+
+services:
+
+    task2.6-back:
+      image: retry2.6-back
+      ports:
+       - 8000:8000
+      environment:
+       - REDIS=redis
+       - REDIS_PORT=6379
+       - DB_USERNAME=testaaja
+       - DB_PASSWORD=testaus
+       - DB_HOST=database
+       - FRONT_URL=http://localhost
+
+      depends_on:
+       - database
+
+      restart: on-failure
+
+    task2.6-front:
+      image: retry2.6-front
+      ports:
+       - 5000:5000
+
+    redis:
+      image: redis
+      ports:
+        - 6379:6379
+
+    database:
+      image: postgres:latest
+      restart: unless-stopped
+      environment:
+       - POSTGRES_PASSWORD=testaus
+       - POSTGRES_USER=testaaja
+
+
+    proxy:
+      image: nginx
+      ports:
+        - 80:80
+      volumes:
+        - ./nginx.conf:/etc/nginx/nginx.conf
+      restart: on-failure
+      depends_on:
+        - task2.6-front
+        - task2.6-back

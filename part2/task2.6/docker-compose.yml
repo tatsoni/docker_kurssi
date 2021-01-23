@@ -1,0 +1,57 @@
+version: '3.6'
+
+services:
+
+    retry2.6-back:
+      image: retry2.6-back
+      ports:
+       - 8000:8000
+      environment:
+       - REDIS=redis
+       - REDIS_PORT=6379
+       - DB_USERNAME=testaaja
+       - DB_PASSWORD=testaus
+       - DB_HOST=database
+
+      container_name: retry2.6-back
+
+      depends_on:
+       - database
+
+      restart: on-failure
+
+    retry2.6-front:
+      image: retry2.6-front
+      ports:
+       - 5000:5000
+      container_name: retry2.6-front
+
+    redis:
+      image: redis
+      ports:
+        - 6379:6379
+
+    database:
+      image: postgres:latest
+      restart: unless-stopped
+      environment:
+       - POSTGRES_PASSWORD=testaus
+       - POSTGRES_USER=testaaja
+
+      container_name: database
+
+
+#    redmine:
+#      image: redmine
+#      environment:
+#        - REDMINE_DB_POSTGRES=post
+#        - REDMINE_DB_PASSWORD=sana
+#      ports:
+#        - 9999:3000
+#      volumes:
+#        - files:/usr/src/redmine/files
+#      depends_on:
+#        - post
+
+#volumes:
+#  files:

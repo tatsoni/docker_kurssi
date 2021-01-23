@@ -1,0 +1,12 @@
+Fri, 22 Jan 2021 11:29:56 GMT
+Fri, 22 Jan 2021 11:29:59 GMT
+Fri, 22 Jan 2021 11:30:02 GMT
+Fri, 22 Jan 2021 11:30:05 GMT
+Secret message is:
+"Volume bind mount is easy"
+Fri, 22 Jan 2021 11:30:11 GMT
+Fri, 22 Jan 2021 11:30:14 GMT
+Fri, 22 Jan 2021 11:30:17 GMT
+Fri, 22 Jan 2021 11:30:20 GMT
+Secret message is:
+"Volume bind mount is easy"

@@ -1,0 +1,2 @@
+docker build -t task1.12_back .
+docker container run -p 8000:8000 task1.12_back

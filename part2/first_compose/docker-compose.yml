@@ -1,0 +1,11 @@
+version: '3.5' 
+
+services: 
+
+    youtube-dl-ubuntu: 
+      image: mustonen/youtube-d
+      build: . 
+      volumes: 
+        - .:/mydir
+      container_name: youtube-dl
+

@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+    task2.3-back:
+      image: task1.12_back
+      build: ./backend
+      ports:
+       - 8000:8000
+      container_name: task2.3-backend
+
+    task2.3-front:
+      image: task1.12_front
+      build: ./frontend
+      ports:
+       - 5000:5000
+      container_name: task2.3-frontend

@@ -1,0 +1,60 @@
+version: '3.6'
+
+services:
+
+    task2.6-back:
+      image: task1.12_back
+      build: ./backend
+      ports:
+       - 8000:8000
+      environment:
+       - REDIS=redis
+       - REDIS_PORT=6379
+#       - DB_USERNAME=testi
+       - DB_PASSWORD=sana
+       - DB_NAME=testdb
+       - DB_host=host.docker.internal
+
+      container_name: task2.6-backend
+
+      depends_on:
+       - post
+
+      restart: on-failure
+
+    task2.6-front:
+      image: task1.12_front
+      build: ./frontend
+      ports:
+       - 5000:5000
+      container_name: task2.6-frontend
+
+    redis:
+      image: redis
+      ports:
+        - 6379:6379
+
+    post:
+      image: postgres:latest
+      restart: unless-stopped
+      environment:
+#       - POSTGRES_USER=testi
+       - POSTGRES_PASSWORD=sana
+       - POSTGRES_DB=testdb
+      container_name: post
+
+
+#    redmine:
+#      image: redmine
+#      environment:
+#        - REDMINE_DB_POSTGRES=post
+#        - REDMINE_DB_PASSWORD=sana
+#      ports:
+#        - 9999:3000
+#      volumes:
+#        - files:/usr/src/redmine/files
+#      depends_on:
+#        - post
+
+#volumes:
+#  files:
